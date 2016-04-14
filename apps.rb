@@ -62,17 +62,26 @@ dep "brews" do
   brews.each { |n, p| requires "#{n}.managed" }
 end
 
-dep "all-apps" do
+dep "base-apps" do
   requires "vim.managed", "spacemacs", "all-osx-apps", "brews"
+end
+
+dep "personal-apps" do
+  requires "Steam.app",
+           "Transmission.app",
+           "calibre.app"
 end
 
 dep "all-osx-apps" do
   requires "Airfoil.app",
            "Alfred.app",
-           # "Dropbox.installer",
-           # "Fantastical 2.app",
+           "Dropbox.installer",
+           "Fantastical 2.app",
            "Firefox.app",
            "Flux.app",
+           "Sequel Pro.app",
+           "Postico.app",
+           "basictex.app",
            "Google Chrome.app",
            "GrandPerspective.app",
            "GitUp.app",
@@ -84,21 +93,14 @@ dep "all-osx-apps" do
            "Moom.app",
            "OmniFocus.app",
            "OmniGraffle.app",
-           "Postgres.app",
+           "Slack.app",
            "Skype.app",
            "SourceTree.app",
            "Spotify.app",
-           "Steam.app",
            "SuperDuper!.app",
-           "TextExpander.app",
-           "Transmission.app",
            "VLC.app",
-           "VMware Fusion.app",
            "Vagrant.installer",
            "VirtualBox.installer",
-           "Yojimbo.app",
-           "calibre.app",
-           "ghc-7.8.4.app",
            "iTerm.app"
 end
 
@@ -170,7 +172,7 @@ dep "VLC.app" do
 end
 
 dep "VirtualBox.installer" do
-  source "http://download.virtualbox.org/virtualbox/4.3.4/VirtualBox-4.3.4-91027-OSX.dmg"
+  source "http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-OSX.dmg"
 end
 
 dep "Dropbox.installer" do
@@ -186,7 +188,11 @@ dep "Alfred.app" do
 end
 
 dep "Fantastical 2.app" do
-  source "http://cdn.flexibits.com/Fantastical_2.0.4.zip"
+  source "https://flexibits.com/fantastical/download"
+end
+
+dep "Slack.app" do
+  source "https://slack.com/ssb/download-osx"
 end
 
 dep "iTerm.app" do
@@ -266,27 +272,27 @@ dep "Marked.app" do
 end
 
 dep "OmniFocus.app" do
-  source "http://www.omnigroup.com/ftp1/pub/software/MacOSX/10.10/OmniFocus-2.5.dmg"
+  source "https://www.omnigroup.com/download/latest/omnifocus"
 end
 
 dep "OmniGraffle.app" do
   source "https://www.omnigroup.com/download/latest/omnigraffle"
 end
 
-dep "Postgres.app" do
-  source "https://github.com/PostgresApp/PostgresApp/releases/download/9.4.0.1/Postgres-9.4.0.1.zip"
-end
-
 dep "SourceTree.app" do
   source "https://downloads.atlassian.com/software/sourcetree/SourceTree_2.0.4.dmg"
 end
 
-dep "Steam.app" do
-  source "http://media.steampowered.com/client/installer/steam.dmg"
+dep "Positco.app" do
+  source "https://eggerapps.at/postico/download/"
 end
 
-dep "VMware Fusion.app" do
-  source "https://download3.vmware.com/software/fusion/file/VMware-Fusion-7.1.0-2314774.dmg"
+dep "Sequel Pro.app" do
+  source "http://www.sequelpro.com/download/"
+end
+
+dep "Steam.app" do
+  source "http://media.steampowered.com/client/installer/steam.dmg"
 end
 
 dep "Yojimbo.app" do
@@ -297,9 +303,9 @@ dep "Vagrant.installer" do
   requires 'VirtualBox.installer'
 
   met? {
-    "/usr/bin/vagrant".p.exists?
+    "/usr/local/bin/vagrant".p.exists?
   }
 
-  source "https://dl.dropboxusercontent.com/u/103175/Installs/vagrant_1.7.2.dmg"
+  source "https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1.dmg"
 end
 
